@@ -161,21 +161,21 @@ public class ScanningSample extends LinearOpMode {
         telemetry.update();
         while (opModeInInit()) {
             telemetry.clear();
-//            if(telemetryTfod() > 0 && telemetryTfod() < 200){
-//                position = "LEFT";
-//                telemetry.addData("Position LEFT: ",telemetryTfod());
-//            }
-//            else if(telemetryTfod() > 200 && telemetryTfod() < 400){
-//                position = "MID";
-//                telemetry.addData("Position MID: ",telemetryTfod());
-//            }
-//            else{
-//                position = "RIGHT";
-//                telemetry.addData("Position RIGHT: ",telemetryTfod());
-//            }
-//            telemetry.update();
+            if(telemetryTfod() > 0 && telemetryTfod() < 300){
+                position = "LEFT";
+                telemetry.addData("Position LEFT: ",telemetryTfod());
+            }
+            else if(telemetryTfod() > 300){
+                position = "MID";
+                telemetry.addData("Position MID: ",telemetryTfod());
+            }
+            else{
+                position = "RIGHT";
+                telemetry.addData("Position RIGHT: ",telemetryTfod());
+            }
+            telemetry.update();
         }
-//        visionPortal.close();
+        visionPortal.close();
         while (opModeIsActive()) {
             YawPitchRollAngles orientation = imu.getRobotYawPitchRollAngles();
             telemetry.addData("Yaw: ",orientation.getYaw(AngleUnit.DEGREES));
@@ -184,16 +184,15 @@ public class ScanningSample extends LinearOpMode {
             //Call Forward to move forward at a certain angle(Angle is relative to starting Angle)
             Forward(0,0.2,15,3);
 
-            break;
-//            if(position == "LEFT"){
-//                break;
-//            }
-//            else if(position == "MID"){
-//                break;
-//            }
-//            else{
-//                break;
-//            }
+            if(position == "LEFT"){
+                break;
+            }
+            else if(position == "MID"){
+                break;
+            }
+            else{
+                break;
+            }
         }
         // Save more CPU resources when camera is no longer needed.
     }
